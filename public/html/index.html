@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  	<head>
+    	<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<script src="https://unpkg.com/aframe-environment-component@1.3.1/dist/aframe-environment-component.min.js"></script>
+		<script src="https://binzume.github.io/aframe-vrm/dist/aframe-vrm.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/node-chatgpt@1.0.0/build/index.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="../js/voicevox.js"></script>
+		<script src="../js/chatgpt.js"></script>
+		<script src="../js/speechRecognation.js"></script>
+		<script src="../js/index.js"></script>
+		<link href="../css/index.css" rel="stylesheet">
+		<meta charset="utf-8">
+	</head>
+  	<body>
+		<div class="button-ui d-flex justify-content-around start-50 translate-middle">
+			<button id="speech-btn" type="button" class="btn btn-primary speech-btn">音声認識</button>
+			<button id="send-btn" type="button" class="btn btn-danger send-btn" type="submit">送信</button>
+		</div>
+		<audio class="audio"></audio>
+    	<a-scene>
+			<a-entity environment="preset: forest; groundColor: #445; grid: cross"></a-entity>
+			<a-assets>
+				<a-asset-item id="btn" src="../3Dmodel/scene.gltf"></a-asset-item>
+			</a-assets>
+			<a-entity cursor="rayOrigin: mouse"></a-entity>
+			<a-entity vrm="src:../3Dmodel/Zundamon.vrm;blink:true" vrm-anim="" rotation="0 180 0" position="-2 0 -4" scale="1.5 1.5 1.5"></a-entity>
+        	<a-text
+				id="zundamon-text"
+    			value="ずんだもんのテキスト"
+    			font="../noto-sans-cjk-jp/noto-sans-cjk-jp-msdf.json"
+    			font-image="../noto-sans-cjk-jp/noto-sans-cjk-jp-msdf.png"
+    			negate="false"
+    			scale="2 2 1"
+    			position="-5 5 -4"
+				color="green"
+				voice-start
+  			></a-text>
+			<a-text
+			  id="result-text"
+			  value="あなたのテキスト"
+			  font="../noto-sans-cjk-jp/noto-sans-cjk-jp-msdf.json"
+			  font-image="../noto-sans-cjk-jp/noto-sans-cjk-jp-msdf.png"
+			  negate="false"
+			  scale="2 2 1"
+			  position="2 5 -4"
+			  color="red"
+			  voice-start
+			></a-text>
+			<!-- <a-entity gltf-model="#btn" scale="0.5 0.5 0.5" position="0 1 -3" rotation="-270 0 0" speech-start></a-entity>
+			<a-entity gltf-model="#btn" scale="0.5 0.5 0.5" position="2 1 -3" rotation="-270 0 0" send-text></a-entity> -->
+    	</a-scene>
+  	</body>
+</html>

@@ -17,13 +17,11 @@
 
 # Installation
 
-環境構築関連
-そのうち追加
+npm i
 
 # Usage
 
-利用方法
-そのうち追加
+npm run start
 
 # Note
 
