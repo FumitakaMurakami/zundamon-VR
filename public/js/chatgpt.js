@@ -1,4 +1,3 @@
-const apikey = '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';
 // メッセージ初期化
 let messages = [];
 
