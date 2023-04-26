@@ -10,7 +10,7 @@ let server = app.listen(3000, function(){
 
 app.set('view engine', 'html');
 app.get("/", function(req, res, next){
-    res.sendFile(__dirname + '/public/html/index.html');
+    res.sendFile(__dirname + 'index.html');
 });
 
 app.use(express.static('public'));
